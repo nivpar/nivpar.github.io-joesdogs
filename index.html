@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<style>
+	p {
+		margin:0;
+		padding:0;
+	}
+</style>
+<html>
+<body>
+	<h1> Welcome to Joe's Hotdogs!</h1>
+	<h2> Your Order </h2>
+	<p>Hello</p>
+	<p id="dogcost"></p>
+	<p id="frycost"></p>
+	<p id="sodacost"></p>
+	<p id="discount"></p>
+	<p id="subtotal"></p>
+	<p id="tax"></p>
+	<p id="total"></p>
+</body>
+<script>
+	window.onload = function(){
+		var hotdogs = prompt("How many hotdogs?", 0);
+		var fries = prompt("How many fries?", 0);
+		var sodas = prompt("How many sodas?", 0);
+		var dogcost = hotdogs*3.25;
+		var frycost = fries*2;
+		var sodacost = sodas*1.5;
+		var subtotal = dogcost+frycost+sodacost;
+		document.getElementById('dogcost').innerHTML = "# Hotdogs: " + hotdogs + " at $3.25 is $" + dogcost;
+		document.getElementById('frycost').innerHTML = "# Fries: " + fries + " at $2.00 is $" + frycost;
+		document.getElementById('sodacost').innerHTML = "# Sodas: " + sodas + " at $1.50 is $" + sodacost;
+		if (subtotal >= 20) {
+			document.getElementById('discount').innerHTML = "You qualified for our 10% discount!";
+		}else {
+			document.getElementById('discount').innerHTML = "You didn't qualify for our 10% discount.";
+		}
+		if (subtotal >= 20) {
+			subtotal = subtotal-(subtotal*.1);
+			subtotal = Math.round(subtotal*100)/100;
+		}
+
+		document.getElementById('subtotal').innerHTML = "Subtotal: $" + subtotal;
+		var tax = subtotal*.0625;
+		tax = Math.round(tax*100)/100;;
+		var total = subtotal + tax; 
+		total = Math.round(total*100)/100;
+		document.getElementById('tax').innerHTML = "Meals Tax: $" + tax;
+		document.getElementById('total').innerHTML = "Total: $" + total;
+
+	}
+</script>
+</html>
